@@ -1,9 +1,14 @@
-# gcp-letsencrypt
+# gcp-letsencrypt- Immber's Fork
 Cloudbuild script to obtain and renew certificates and attach to a load-balancer in Google Cloud Platform.
 This can be run in [Google Cloud Build](https://cloud.google.com/cloud-build/).
 
 This is intended to be used to renew [letsencrypt](https://letsencrypt.org) certificates (or get certificates for a new domain) and set them to be used on an *existing* [https load-balancer](https://cloud.google.com/load-balancing/docs/https/).  
 Without edits, this will try to obtain a wildcard certificate for the whole domain, including the domain apex.
+
+## Changes on my fork
+* Removed the ref to a SA key file (specified SA in build settings)
+* Added logging optoins to fix error `invalid_argument: if 'build.service_account' is specified, the build must either (a) specify a logging option`
+* Deployed with cron schedule `0 1 15 * *` to check for renewal once a month
 
 > Note: This script stores the generated certificates in Google Cloud Storage between runs to avoid renewing certificates too frequently.  This may pose a security risk.
 
