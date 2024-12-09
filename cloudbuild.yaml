@@ -26,3 +26,5 @@ steps:
     "${_FRONT_END_NAME_IPV4}",
     "${_FRONT_END_NAME_IPV6}"
   ]
+options:
+  logging: CLOUD_LOGGING_ONLY
